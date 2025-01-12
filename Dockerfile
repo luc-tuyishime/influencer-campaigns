@@ -1,16 +1,16 @@
-FROM node:18-alpine
+FROM node:18.20.2-alpine
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm install -g npm@10.5.0
+
+RUN npm install --force
 
 COPY . .
 
 RUN npm run build
-
-ENV NODE_ENV production
 
 EXPOSE 3001
 

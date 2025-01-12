@@ -7,3 +7,6 @@ dist
 *.md
 .gitignore
 .dockerignore
+Dockerfile
+.next
+.cache
