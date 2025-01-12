@@ -23,8 +23,8 @@ A NestJS-based backend for managing influencer campaigns, submissions, and user 
 
 1. Clone the repository
 ```
-git clone <repository-url>
-cd influencer-campaign-backend
+git clone `https://github.com/luc-tuyishime/influencer-campaigns.git`
+cd influencer-campaigns
 ```
 2. Install dependencies
 ```
