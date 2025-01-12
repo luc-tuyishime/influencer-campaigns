@@ -5,8 +5,5 @@ dist
 .env
 .env.*
 *.md
-.gitignore
-.dockerignore
-Dockerfile
 .next
 .cache
