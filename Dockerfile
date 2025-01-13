@@ -12,6 +12,8 @@ RUN npm run build
 
 RUN npm prune --production
 
-EXPOSE 3001
+ENV NODE_ENV=production
+
+EXPOSE ${PORT}
 
 CMD ["npm", "run", "start:prod"]
