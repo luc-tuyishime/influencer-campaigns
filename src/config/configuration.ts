@@ -7,7 +7,4 @@ export default () => ({
     secret: process.env.JWT_SECRET || 'super-secret',
     expiresIn: process.env.JWT_EXPIRES_IN || '1d',
   },
-  frontend: {
-    url: process.env.FRONTEND_URL || 'http://localhost:6000',
-  },
 });
