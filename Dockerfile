@@ -1,23 +1,17 @@
 FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+RUN npm install --production=false
 
-# Copy source code
 COPY . .
 
-# Build application
 RUN npm run build
 
-# Expose port
+RUN npm prune --production
+
 EXPOSE 3001
 
-# Start the application
 CMD ["npm", "run", "start:prod"]
-
