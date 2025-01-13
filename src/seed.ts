@@ -3,11 +3,11 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGO_URL = process.env.MONGO_URL;
 
 async function seed() {
   try {
-    const client = await MongoClient.connect(MONGODB_URI);
+    const client = await MongoClient.connect(MONGO_URL);
     const db = client.db();
 
     await db.collection('campaigns').deleteMany({});

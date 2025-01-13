@@ -1,7 +1,7 @@
 export default () => ({
   port: parseInt(process.env.PORT, 10) || 3001,
   database: {
-    uri: process.env.MONGODB_URI || null,
+    uri: process.env.MONGO_URL || null,
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'super-secret',

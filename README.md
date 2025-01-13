@@ -33,7 +33,7 @@ npm install
 3.Create a `.env` file in the root directory
 ```
 PORT=3001
-MONGODB_URI=
+MONGO_URL=
 JWT_SECRET=your-super-secret-key
 JWT_EXPIRES_IN=1d
 ```
