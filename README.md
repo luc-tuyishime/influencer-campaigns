@@ -2,6 +2,10 @@
 
 A NestJS-based backend for managing influencer campaigns, submissions, and user authentication.
 
+### 🚀 Live API
+
+* Production API Base URL: https://influencer-campaigns-production.up.railway.app/
+
 ### Features
 
 * JWT Authentication
@@ -12,47 +16,6 @@ A NestJS-based backend for managing influencer campaigns, submissions, and user 
 * TypeScript support
 * Input validation
 * Error handling
-
-### Prerequisites
-
-* Node.js (v16 or higher)
-* MongoDB (v4.4 or higher)
-* npm or yarn package manager
-
-### Installation
-
-1. Clone the repository
-```
-git clone `https://github.com/luc-tuyishime/influencer-campaigns.git`
-cd influencer-campaigns
-```
-2. Install dependencies
-```
-npm install
-```
-3.Create a `.env` file in the root directory
-```
-PORT=3001
-MONGO_URL=
-JWT_SECRET=your-super-secret-key
-JWT_EXPIRES_IN=1d
-```
-
-### Running the Application
-
-1. Start MongoDB
-```
-Ensure your local MongoDB instance is running
-```
-2. Seed the database with the test data
-```
-npm run seed
-```
-3. Start the development server
-```
-npm run start:dev
-```
-The API will be available at http://localhost:3001/api
 
 ### API ENDPOINTS
 
@@ -112,6 +75,51 @@ Content-Type: application/json
     "description": "Optional description"
 }
 ```
+
+## 💻 Local Development Setup
+
+### Prerequisites
+
+* Node.js (v16 or higher)
+* MongoDB (v4.4 or higher)
+* npm or yarn package manager
+
+### Installation
+
+1. Clone the repository
+```
+git clone `https://github.com/luc-tuyishime/influencer-campaigns.git`
+cd influencer-campaigns
+```
+2. Install dependencies
+```
+npm install
+```
+3.Create a `.env` file in the root directory
+```
+PORT=3001
+MONGO_URL=
+JWT_SECRET=your-super-secret-key
+JWT_EXPIRES_IN=1d
+```
+
+### Running the Application
+
+1. Start MongoDB
+```
+Ensure your local MongoDB instance is running
+```
+2. Seed the database with the test data
+```
+npm run seed
+```
+3. Start the development server
+```
+npm run start:dev
+```
+The API will be available at http://localhost:3001/api
+
+
 
 ### Security Features
 
