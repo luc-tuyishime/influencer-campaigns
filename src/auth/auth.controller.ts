@@ -1,18 +1,45 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpException,
+  HttpStatus,
+  UseFilters,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginDto, RegisterDto } from './dto/auth.dto';
+import { RegisterDto, LoginDto } from './dto/auth.dto';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto);
+  async register(@Body() registerDto: RegisterDto) {
+    try {
+      return await this.authService.register(registerDto);
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException(
+        error.message || 'Registration failed',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Post('login')
-  login(@Body() loginDto: LoginDto) {
-    return this.authService.login(loginDto);
+  async login(@Body() loginDto: LoginDto) {
+    try {
+      return await this.authService.login(loginDto);
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException(
+        error.message || 'Login failed',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 }

@@ -3,6 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { AppModule } from './app.module';
+import { MongoExceptionFilter } from './filters/mongoose-exception.filter';
 
 async function bootstrap() {
   try {
@@ -36,6 +37,8 @@ async function bootstrap() {
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document);
+
+    app.useGlobalFilters(new MongoExceptionFilter());
 
     const port = configService.get<number>('PORT', 3001);
     await app.listen(port);

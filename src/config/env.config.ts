@@ -7,7 +7,7 @@ export interface EnvironmentVariables {
 }
 
 export const validate = (config: Record<string, unknown>) => {
-  const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET'];
+  const requiredEnvVars = ['MONGO_URL', 'JWT_SECRET'];
   for (const envVar of requiredEnvVars) {
     if (!config[envVar]) {
       throw new Error(`Environment variable ${envVar} is required`);
