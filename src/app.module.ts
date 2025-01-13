@@ -9,29 +9,23 @@ import { CampaignsModule } from './campaigns/campaigns.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      cache: true,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (config: ConfigService) => {
-        const uri = config.get<string>('MONGO_URL');
-        if (!uri) {
-          throw new Error('MONGO_URL is not defined in environment variables');
+      useFactory: async (configService: ConfigService) => {
+
+        const mongoUrl = configService.get<string>('MONGO_URL');
+        if (!mongoUrl) {
+          console.error('MongoDB URL is not defined');
+          throw new Error('MONGO_URL environment variable is not defined');
         }
-        console.log('Attempting to connect to MongoDB with URI configuration');
+
         return {
-          uri,
+          uri: mongoUrl,
           useNewUrlParser: true,
           useUnifiedTopology: true,
-          connectionFactory: (connection) => {
-            connection.on('connected', () => {
-              console.log('MongoDB connection established successfully');
-            });
-            connection.on('error', (error) => {
-              console.error('MongoDB connection error:', error);
-            });
-            return connection;
-          }
         };
       },
     }),

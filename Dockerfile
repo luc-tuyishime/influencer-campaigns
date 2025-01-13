@@ -2,22 +2,20 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application
 COPY . .
 
+# Build the application
 RUN npm run build
 
-RUN npm prune --production
+# Expose port 3001
+EXPOSE 3001
 
-EXPOSE ${PORT}
-
-ENV MONGO_URL=${MONGO_URL} \
-    JWT_SECRET=${JWT_SECRET} \
-    JWT_EXPIRES_IN=${JWT_EXPIRES_IN} \
-    NODE_ENV=${NODE_ENV} \
-    PORT=${PORT}
-
+# Start the application
 CMD ["npm", "run", "start:prod"]
